@@ -7,9 +7,9 @@
 
 using namespace std;
 
-const int N = 8;
+const int NUM = 300;
 
-void erase2(int **&temp)
+void erase2(int **&temp, const int& N)
 {
     for (int i = 0; i < N; i++)
         delete[] temp[i];
@@ -29,9 +29,9 @@ void show(int **temp)
 {
     if (temp)
     {
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < NUM; i++)
         {
-            for (int j = 0; j < N; j++)
+            for (int j = 0; j < NUM; j++)
                 cout << temp[i][j] << " ";
             cout << endl;
         }
@@ -133,6 +133,9 @@ void div(int count, int ai, int aj, int bi, int bj, int ci, int cj, int **a, int
 
 int main()
 {
+    int N = 1;
+    while(N<NUM)
+        N = N<<1;
     int **a = new int *[N];
     int **b = new int *[N];
     int **c = new int *[N];
@@ -142,8 +145,8 @@ int main()
         b[i] = new int[N]();
         c[i] = new int[N]();
     }
-    for(int i=0; i<N; i++)
-        for(int j=0; j<N; j++)
+    for(int i=0; i<NUM; i++)
+        for(int j=0; j<NUM; j++)
         {
             a[i][j] = i+j;
             b[i][j] = i+j+1;
@@ -152,7 +155,7 @@ int main()
     show(a);
     show(b);
     show(c);
-    erase2(a);
-    erase2(b);
-    erase2(c);
+    erase2(a,N);
+    erase2(b,N);
+    erase2(c,N);
 }
