@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const int N = 8;
+const int N = 300;
 
 int **matrix(int **a, int **b)
 {
