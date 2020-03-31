@@ -1,6 +1,7 @@
 //以假设为2的幂的阶数。
 #include <iostream>
 #include <vector>
+#include <chrono>
 
 #define il first
 #define jl second
@@ -133,6 +134,7 @@ void div(int count, int ai, int aj, int bi, int bj, int ci, int cj, int **a, int
 
 int main()
 {
+    auto t1=std::chrono::steady_clock::now();
     int N = 1;
     while(N<NUM)
         N = N<<1;
@@ -158,4 +160,7 @@ int main()
     erase2(a,N);
     erase2(b,N);
     erase2(c,N);
+    auto t2=std::chrono::steady_clock::now();
+    double dr_s=std::chrono::duration<double,std::micro>(t2-t1).count();
+    cout<<"运行时间："<<dr_s<<"ns."<<endl;
 }
